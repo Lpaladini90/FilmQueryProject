@@ -20,7 +20,7 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
-	private List<Film> film;
+	private List<Actor> cast;
 	
 	
 	
@@ -46,7 +46,7 @@ public class Film {
 	}
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
-			List<Film> film) {
+			List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -59,7 +59,7 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-		this.film = film;
+		this.cast = cast;
 	}
 	
 	public int getId() {
@@ -128,11 +128,11 @@ public class Film {
 	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
-	public List<Film> getFilms() {
-		return film;
+	public List<Actor> getActors() {
+		return cast;
 	}
-	public void setFilms(List<Film> films) {
-		this.film = films;
+	public void SetActors(List<Actor> cast) {
+		this.cast = cast;
 	}
 	@Override
 	public String toString() {
@@ -145,7 +145,7 @@ public class Film {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(description, film, id, languageId, length, rating, releaseYear, rentalDuration, rentalRate,
+		return Objects.hash(description, cast, id, languageId, length, rating, releaseYear, rentalDuration, rentalRate,
 				replacementCost, specialFeatures, title);
 	}
 	@Override
@@ -157,7 +157,7 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
-		return Objects.equals(description, other.description) && Objects.equals(film, other.film) && id == other.id
+		return Objects.equals(description, other.description) && Objects.equals(cast, other.cast) && id == other.id
 				&& languageId == other.languageId && length == other.length && Objects.equals(rating, other.rating)
 				&& releaseYear == other.releaseYear && rentalDuration == other.rentalDuration
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)

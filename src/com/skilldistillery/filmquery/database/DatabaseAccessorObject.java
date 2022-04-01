@@ -58,6 +58,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					film.setReplacementCost(rs.getDouble("replacement_cost"));
 					film.setRating(rs.getString("rating"));
 					film.setSpecialFeatures(rs.getString("special_features"));
+					film.SetActors(findActorsByFilmId(filmId));
 					
 				}
 				
@@ -70,7 +71,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
   }
 
 	private PreparedStatement createPreparedStatement(Connection conn2, int actorId) throws SQLException {
-		sqltxt = "SELECT * FROM actor WHERE id = ?";
+		sqltxt = "SELECT * FROM film WHERE id = ?";
 		PreparedStatement stmt = conn2.prepareStatement(sqltxt);
 		stmt.setInt(1, actorId );
 		return stmt;
@@ -115,35 +116,43 @@ private PreparedStatement createPreparedStatement2(Connection conn2, int actorId
 
 @Override
 public List<Actor>findActorsByFilmId(int filmId) {
-	List<Actor> actorList = null;
+	List<Actor> actors = new ArrayList<>();
+	Actor actor;
+	
 	user = "student";
 	password = "student";
-	sqltxt = "SELECT film.id, actor.id, actor.first_name, actor.last_name "
+	sqltxt = "SELECT actor.id 'Actor ID', actor.first_name, actor.last_name "
 			+ "FROM actor "
 			+ "JOIN film_actor "
 			+ "ON actor.id = film_actor.actor_id "
-			+ "JOIN film "
-			+ "ON film.id = film_actor.film_id"
-			+ "WHERE film.id = ?";
+			+ "WHERE film_actor.film_id = ? ";
 	try {
 		conn = DriverManager.getConnection(URL, user, password); 
 		PreparedStatement stmt= conn.prepareStatement(sqltxt);
 		stmt.setInt(1, filmId );
 			rs = stmt.executeQuery(); 
 		 
-		if(rs.next()) {
-			actorList = new ArrayList<>();
-			actorList.add(rs.getInt("film.id"));
+		while(rs.next()) {
+			actor = new Actor();
+			actor.setId(rs.getInt("Actor ID"));
+			actor.setFirstName(rs.getString("first_name"));
+			actor.setLastName(rs.getString("last_name"));
 			
+			actors.add(actor);
 			
+		
+			 
 		}
+		rs.close();
+		conn.close();
+		stmt.close();
 	}
 	 catch (SQLException e) {
 		e.printStackTrace();
 	}
 	 
 	
-return actorList;
+return actors;
 }
 
 
