@@ -3,11 +3,11 @@ package com.skilldistillery.filmquery.database;
 import java.util.List;
 
 import com.skilldistillery.filmquery.entities.Actor;
-import com.skilldistillery.filmquery.entities.Film;
+import com.skilldistillery.filmquery.entities.Test;
 import com.skilldistillery.filmquery.entities.Film2;
 
 public interface DatabaseAccessor {
-	public Film findFilmById(int filmId);
+	public Test findFilmById(int filmId);
 
 	public Film2 findFilmByIdSpecific(int filmdId);
 

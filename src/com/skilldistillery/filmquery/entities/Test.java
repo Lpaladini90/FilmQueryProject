@@ -7,7 +7,7 @@ import java.util.Objects;
 
 //build out film class with app fields
 
-public class Film {
+public class Test {
 
 	private int id;
 	private String title;
@@ -22,11 +22,11 @@ public class Film {
 	private String specialFeatures;
 	private List<Actor> cast;
 
-	public Film() {
+	public Test() {
 		super();
 	}
 
-	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
+	public Test(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
 		this.id = id;
@@ -42,7 +42,7 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
+	public Test(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
 			List<Actor> cast) {
 		super();
@@ -158,9 +158,9 @@ public class Film {
 
 	@Override
 	public String toString() {
-		String output = "Film: \nID: " + id + "\nTitle: " + title + "\nDescription: " + description + "\nRelease Year: "
+		String output = "Test: \nID: " + id + "\nTitle: " + title + "\nDescription: " + description + "\nRelease Year: "
 				+ releaseYear + "\nLanguage: " + languageId + "\nRental Duration: " + rentalDuration + "\nRental Rate: "
-				+ rentalRate + "\n Film Length: " + length + "\nReplacement Cost: " + replacementCost
+				+ rentalRate + "\n Test Length: " + length + "\nReplacement Cost: " + replacementCost
 				+ "\nFilm Rating: " + rentalRate + "\nSpecial Features: " + specialFeatures;
 
 		return output;
@@ -181,7 +181,7 @@ public class Film {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Film other = (Film) obj;
+		Test other = (Test) obj;
 		return Objects.equals(description, other.description) && Objects.equals(cast, other.cast) && id == other.id
 				&& languageId == other.languageId && length == other.length && Objects.equals(rating, other.rating)
 				&& releaseYear == other.releaseYear && rentalDuration == other.rentalDuration
