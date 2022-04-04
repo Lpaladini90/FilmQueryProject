@@ -4,17 +4,16 @@ import java.util.List;
 
 import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Test;
-import com.skilldistillery.filmquery.entities.Film2;
+import com.skilldistillery.filmquery.entities.Film;
 
 public interface DatabaseAccessor {
-	public Test findFilmById(int filmId);
+	
+	public Film findFilmById(int filmdId);
 
-	public Film2 findFilmByIdSpecific(int filmdId);
-
-	public Actor findActorById(int actorId);
+//	public Actor findActorById(int actorId);
 
 	public List<Actor> findActorsByFilmId(int filmId);
 
-	public List<Film2> findFilmByKeyword(String keyword);
+	public List<Film> findFilmByKeyword(String keyword);
 //
 }

@@ -3,59 +3,58 @@ package com.skilldistillery.filmquery.entities;
 import java.util.List;
 import java.util.Objects;
 
-public class Film2 {
+public class Film {
 
-	private int filmId;
+	private int id;
 	private String title;
 	private int releaseYear;
 	private String rating;
 	private String description;
 	private String language;
 	private List<Actor> cast;
-	private List<Film2> films;
-	private Actor actor;
+	private List<Film> films;
+	
 
-	public Film2() {
+	public Film() {
 		super();
 	}
 
-	public Film2(int filmId, String title, int releaseYear, String rating, String description, String language,
-			List<Actor> cast, List<Film2> films, Actor actor) {
+
+
+	public Film(int id, String title, int releaseYear, String rating, String description, String language) {
 		super();
-		this.filmId = filmId;
+		this.id = id;
 		this.title = title;
 		this.releaseYear = releaseYear;
 		this.rating = rating;
 		this.description = description;
 		this.language = language;
-		this.cast = cast;
-		this.films = films;
-		this.actor = actor;
+		
 	}
 
-	public Actor getActor() {
-		return actor;
-	}
 
-	public void setActor(Actor actor) {
-		this.actor = actor;
-	}
 
-	public int getFilmId() {
-		return filmId;
-	}
-
-	public void setFilmId(int filmId) {
-		this.filmId = filmId;
-	}
-
-	public List<Film2> getFilms() {
+	public List<Film> getFilms() {
 		return films;
 	}
 
-	public void setFilms(List<Film2> films) {
+
+
+	public void setFilms(List<Film> films) {
 		this.films = films;
 	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int filmId) {
+		this.id = filmId;
+	}
+
+	
 
 	public String getTitle() {
 		return title;
@@ -114,11 +113,20 @@ public class Film2 {
 		return output;
 
 	}
+	
+	public String toString2() {
+		String output = "\n\nFilm: \n\nTitle: " + title + "\n\nRelease Year: " + releaseYear + "\n\nFilm Rting: "
+				+ rating + "\n\nDescription: " + description + "\n\nLanguage: " + language;
+		return output;
+	}
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(actor, cast, description, filmId, films, language, rating, releaseYear, title);
+		return Objects.hash(cast, description, films, id, language, rating, releaseYear, title);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,12 +136,12 @@ public class Film2 {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Film2 other = (Film2) obj;
-		return Objects.equals(actor, other.actor) && Objects.equals(cast, other.cast)
-				&& Objects.equals(description, other.description) && filmId == other.filmId
-				&& Objects.equals(films, other.films) && Objects.equals(language, other.language)
+		Film other = (Film) obj;
+		return Objects.equals(cast, other.cast) && Objects.equals(description, other.description)
+				&& Objects.equals(films, other.films) && id == other.id && Objects.equals(language, other.language)
 				&& Objects.equals(rating, other.rating) && releaseYear == other.releaseYear
 				&& Objects.equals(title, other.title);
 	}
+
 
 }

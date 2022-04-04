@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
-import com.skilldistillery.filmquery.entities.Film2;
+import com.skilldistillery.filmquery.entities.Film;
 
 public class FilmQueryApp {
 
@@ -13,11 +13,10 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
-		
+
 		app.launch();
 	}
 
-	
 	private void launch() {
 		Scanner sc = new Scanner(System.in);
 
@@ -42,13 +41,13 @@ public class FilmQueryApp {
 
 			int userInput = sc.nextInt();
 
-			switch (userInput) {  
+			switch (userInput) {
 			case 1:
 				System.out.println("Enter a Test ID(number).");
 				int filmId = sc.nextInt();
-				Film2 film2 = db.findFilmByIdSpecific(filmId);
-				if (film2 != null) {
-					System.out.println(film2);
+				Film film = db.findFilmById(filmId);
+				if (film != null) {
+					System.out.println(film.toString());
 				} else {
 					System.out.println("There is no film matching that id try again");
 				}
@@ -58,14 +57,13 @@ public class FilmQueryApp {
 			case 2:
 				System.out.println("Enter a keyword for search.");
 				String keyword = sc.next();
-				List<Film2> films = db.findFilmByKeyword(keyword);
-				if (films != null) {
-				
-						System.out.println(films);
-					
-					
-				} else {
-					System.out.println("There are no titles or descriptions matching " + keyword);
+				film = new Film();
+				List<Film> films = db.findFilmByKeyword(keyword);
+
+				for (Film film2 : films) {
+
+					System.out.println(film2.toString2());
+
 				}
 
 				break;
